@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Table from '../../components/Table/Table';
-import { MissionsM } from '../Missions.types';
+import { MissionsM } from './Missions.types';
+import './Missions.scss';
+
 export default function Missions() {
   const [missions, setMissions] = useState<MissionsM>([]);
 
@@ -19,7 +21,10 @@ export default function Missions() {
 
   return (
     <article>
-      <h2>Missions</h2>
+      <div className="top-panel">
+        <h2>Missions</h2>
+        <button>New mission</button>
+      </div>
       <Table missions={missions} />
     </article>
   );

@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+## Journey Orchestrator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+As Earth’s coffee supply dwindles and the lure of Martian sunsets grows, humanity sets its sights
+on Mars—not just to visit, but to stay. This grand plan requires more than old-school gadgets; it
+needs groundbreaking innovation. Relay42 is stepping up with the "Journey Orchestrator,"
+designed to seamlessly manage the chaos of setting up shop on another planet. This platform
+aims to streamline the complex coordination of interplanetary travel, ensuring that every aspect of
+mission planning and execution is meticulously organized and monitored. Your task is to develop
+this comprehensive system, incorporating real-time data handling, user interactions, and dynamic
+content.
 
-Currently, two official plugins are available:
+## Start the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Open the terminal in the repository location
 
-## Expanding the ESLint configuration
+Install packages:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`yarn`
 
-- Configure the top-level `parserOptions` property like this:
+Run react
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+`yarn dev`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Open a second terminal without closing the first one,
+
+Move to /server folder
+
+`cd server`
+
+mock with json-server:
+
+`run npx json-server db.json`

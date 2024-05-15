@@ -1,5 +1,7 @@
 import './Table.scss';
-export default function Table({ missions }) {
+import { MissionsM } from '../../pages/Missions/Missions.types';
+
+export default function Table({ missions }: { missions: MissionsM }) {
   return (
     <table className="missions-table">
       <thead>
@@ -8,16 +10,22 @@ export default function Table({ missions }) {
           <th>Members</th>
           <th>Destination</th>
           <th>Departure</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {missions?.map((mission) => {
           return (
-            <tr>
+            <tr className="missions-table_row">
               <td>{mission.name}</td>
               <td>{mission.crew_count}</td>
               <td>{mission.destination}</td>
               <td>{mission.date}</td>
+              <td>
+                <button>
+                  <img src="public/assets/edit.svg" alt="edit"></img>
+                </button>
+              </td>
             </tr>
           );
         })}
