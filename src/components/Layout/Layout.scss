@@ -1,0 +1,24 @@
+@import '../variables';
+
+.layout {
+  display: block;
+  background-color: $bg-color;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: auto;
+  nav {
+    overflow: auto;
+    background-color: $nav-color;
+    border-bottom: 1px solid lightgray;
+    .main-title {
+      width: 95%;
+      margin-left: auto;
+    }
+  }
+  article {
+    margin: auto;
+    width: 80%;
+    margin-top: 3rem;
+  }
+}

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Missions from './pages/Missions';
-import Layout from './components/Layout';
+import Missions from './pages/Missions/Missions';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
