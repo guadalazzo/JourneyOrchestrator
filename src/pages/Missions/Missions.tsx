@@ -1,31 +1,40 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Table from '../../components/Table/Table';
 import { MissionsM } from './Missions.types';
 import './Missions.scss';
+import { getMissions } from '../../services';
 
 export default function Missions() {
   const [missions, setMissions] = useState<MissionsM>([]);
+  const navigate = useNavigate();
 
-  const getMissions = async () => {
+  const loadMissions = async () => {
     try {
-      const missionsResponse = await fetch('http://localhost:3000/missions');
-      const parsedRes = await missionsResponse.json();
-      setMissions(parsedRes);
+      const data = await getMissions();
+      setMissions(data);
     } catch (e) {
       console.error('error:', e);
     }
   };
+
   useEffect(() => {
-    getMissions();
+    loadMissions();
   }, []);
 
+  const handleEdit = (id: number) => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
-    <article>
+    <div>
       <div className="top-panel">
         <h2>Missions</h2>
-        <button>New mission</button>
+        <Link className="top-panel_new-mission" to="/create">
+          New mission
+        </Link>
       </div>
-      <Table missions={missions} />
-    </article>
+      <Table missions={missions} handleEdit={handleEdit} />
+    </div>
   );
 }

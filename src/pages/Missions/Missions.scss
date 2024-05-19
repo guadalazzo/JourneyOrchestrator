@@ -3,7 +3,7 @@
 .top-panel {
   display: flex;
   justify-content: space-between;
-  button {
+  &_new-mission {
     background-color: $gray;
     color: $white;
     padding: 10px;

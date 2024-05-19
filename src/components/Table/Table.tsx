@@ -1,7 +1,7 @@
 import './Table.scss';
 import { MissionsM } from '../../pages/Missions/Missions.types';
 
-export default function Table({ missions }: { missions: MissionsM }) {
+export default function Table({ missions, handleEdit }: { missions: MissionsM; handleEdit: (id: number) => void }) {
   return (
     <table className="missions-table">
       <thead>
@@ -14,15 +14,15 @@ export default function Table({ missions }: { missions: MissionsM }) {
         </tr>
       </thead>
       <tbody>
-        {missions?.map((mission) => {
+        {missions?.map((mission, index) => {
           return (
-            <tr className="missions-table_row">
+            <tr className="missions-table_row" key={`${mission.name}-${index}`}>
               <td>{mission.name}</td>
               <td>{mission.crew_count}</td>
               <td>{mission.destination}</td>
               <td>{mission.date}</td>
               <td>
-                <button>
+                <button onClick={() => handleEdit(mission.id)}>
                   <img src="public/assets/edit.svg" alt="edit"></img>
                 </button>
               </td>
