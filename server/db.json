@@ -139,6 +139,27 @@
           "experience": "0"
         }
       ]
+    },
+    {
+      "id": "8a15",
+      "name": "radsd",
+      "destination": "Mars Alpha-110",
+      "date": "01/02/2002",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "pilot",
+          "experience": "13"
+        },
+        {
+          "type": "passenger",
+          "experience": "0"
+        }
+      ]
     }
   ]
 }

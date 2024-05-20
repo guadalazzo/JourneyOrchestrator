@@ -3,6 +3,7 @@
 .top-panel {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   &_new-mission {
     background-color: $gray;
     color: $white;
@@ -10,5 +11,6 @@
     font-weight: 600;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: fit-content;
   }
 }
