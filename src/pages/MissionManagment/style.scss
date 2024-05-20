@@ -25,7 +25,7 @@
     .remove-button {
       color: $gray;
       position: absolute;
-      top: 40%;
+      top: 33%;
       right: 10px;
     }
   }
@@ -44,7 +44,7 @@
   }
 }
 
-.mission-managment {
+.mission-managment form {
   display: flex;
   flex-direction: column;
   .cta {

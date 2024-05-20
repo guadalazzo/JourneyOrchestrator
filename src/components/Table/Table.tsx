@@ -1,12 +1,34 @@
 import './Table.scss';
 import { Mission } from '../../types/missionManagment.types';
+import { useState } from 'react';
 
 export default function Table({ missions, handleEdit }: { missions: Mission[]; handleEdit: (id: number) => void }) {
+  const [missionsName, setMissionName] = useState('');
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMissionName(e.target.value);
+  };
+  const filteredMissions = missions.filter((product) => {
+    // TODO implement Debounce
+    return product.name.includes(missionsName);
+  });
+
   return (
     <table className="missions-table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>
+            <label className="search">
+              <img src="public/assets/search.svg" alt="search"></img>
+              <input
+                onChange={handleInput}
+                value={missionsName}
+                type="text"
+                name="name"
+                id="name-search"
+                placeholder="Search by Name"
+              />
+            </label>
+          </th>
           <th>Members</th>
           <th>Destination</th>
           <th>Departure</th>
@@ -14,7 +36,7 @@ export default function Table({ missions, handleEdit }: { missions: Mission[]; h
         </tr>
       </thead>
       <tbody>
-        {missions?.map((mission, index) => {
+        {filteredMissions?.map((mission, index) => {
           return (
             <tr className="missions-table_row" key={`${mission.name}-${index}`}>
               <td>{mission.name}</td>
@@ -29,6 +51,7 @@ export default function Table({ missions, handleEdit }: { missions: Mission[]; h
             </tr>
           );
         })}
+        {!filteredMissions.length && <div>No results</div>}
       </tbody>
     </table>
   );
