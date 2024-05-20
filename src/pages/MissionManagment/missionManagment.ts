@@ -6,7 +6,7 @@ export type Pilot = {
 export type Engineer = {
   type: 'engineer';
   experience: string;
-  job: 'Navigation' | 'Solar panels' | 'Maintenance' | 'Mechanics' | 'Navigation';
+  job: 'Navigation' | 'Solar panels' | 'Maintenance' | 'Mechanics';
 };
 
 export type Passenger = {

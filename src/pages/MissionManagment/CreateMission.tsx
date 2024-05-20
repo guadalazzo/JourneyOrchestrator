@@ -27,29 +27,38 @@ export default function CreateMission() {
   const handleAddMember = () => {
     setMembers((prevMembers) => [...prevMembers, { type: 'pilot', experience: '0' }]);
   };
+  const handleRemoveMember = (index: number, e) => {
+    e.preventDefault();
+    setMembers((prevMembers) => {
+      const updatedMembers = prevMembers.filter((_, i) => i !== index);
+      return updatedMembers;
+    });
+  };
   return (
-    <div>
+    <div className="main-content">
       <h2>Configure a new Mission</h2>
       <form>
         <fieldset className="mission-topinfo">
-          <label htmlFor="name">
-            Name:
+          <label htmlFor="name" className="field">
+            Name
             <input type="text" value={mission.name} name="name" onChange={handleChange}></input>
           </label>
-          <label htmlFor="destination">
-            Destination:
+          <label htmlFor="destination" className="field">
+            Destination
+            {/* TODO CHANGE FOR SELECT */}
             <input type="text" value={mission.destination} name="destination" onChange={handleChange}></input>
           </label>
-          <label htmlFor="date">
-            Departure:
+          <label htmlFor="date" className="field">
+            Departure
             <input type="text" value={mission.date} name="date" onChange={handleChange}></input>
           </label>
         </fieldset>
         <div className="member-list">
+          <h3>Members</h3>
           {members.map((member, index) => {
             return (
-              <fieldset key={`${member.type}-${index}`}>
-                <label>
+              <fieldset key={`${member.type}-${index}`} className="member">
+                <label className="field">
                   {member.type === 'passenger' ? 'Name:' : 'Type:'}
                   <select
                     value={member.type}
@@ -60,27 +69,41 @@ export default function CreateMission() {
                     <option value="engineer">Engineer</option>
                     <option value="passenger">Passanger</option>
                   </select>
-                  {member.type === 'pilot' || member.type === 'engineer' ? (
+                </label>
+
+                {member.type === 'pilot' || member.type === 'engineer' ? (
+                  <label className="field">
+                    Experience
                     <input
-                      type="number"
                       id="experience"
                       placeholder="experience"
                       value={member.experience}
                       name="experience"
                       onChange={(e) => handleMemberChange(index, 'experience', e.target.value)}
                     />
-                  ) : null}
-                  {member.type === 'engineer' && ( //TODO CAMBIAR POR UN SELECT
-                    <input
+                  </label>
+                ) : null}
+
+                {member.type === 'engineer' && ( //TODO CAMBIAR POR UN SELECT
+                  <label className="field">
+                    Job
+                    <select
                       id="job"
-                      placeholder="job"
                       value={member.job}
                       name="job"
                       onChange={(e) => handleMemberChange(index, 'job', e.target.value)}
-                      type="number"
-                    />
-                  )}
-                  {member.type === 'passenger' && (
+                    >
+                      <option>Navigation</option>
+                      <option>Solar panels</option>
+                      <option>Maintenance</option>
+                      <option>Mechanics</option>
+                    </select>
+                  </label>
+                )}
+
+                {member.type === 'passenger' && (
+                  <label className="field">
+                    Age
                     <input
                       id="age"
                       placeholder="age"
@@ -89,8 +112,12 @@ export default function CreateMission() {
                       onChange={(e) => handleMemberChange(index, 'age', e.target.value)}
                       type="text"
                     />
-                  )}
-                  {member.type === 'passenger' && (
+                  </label>
+                )}
+
+                {member.type === 'passenger' && (
+                  <label className="field">
+                    Wealth
                     <input
                       id="wealth"
                       placeholder="wealth"
@@ -99,13 +126,16 @@ export default function CreateMission() {
                       onChange={(e) => handleMemberChange(index, 'wealth', e.target.value)}
                       type="text"
                     />
-                  )}
-                </label>
+                  </label>
+                )}
+                <button type="button" onClick={(e) => handleRemoveMember(index, e)} className="remove-button">
+                  X
+                </button>
               </fieldset>
             );
           })}
 
-          <button type="button" onClick={handleAddMember}>
+          <button type="button" onClick={handleAddMember} className="new-member">
             New member
           </button>
         </div>

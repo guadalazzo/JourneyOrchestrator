@@ -27,7 +27,7 @@ export default function Missions() {
   };
 
   return (
-    <div>
+    <div className="main-content">
       <div className="top-panel">
         <h2>Missions</h2>
         <Link className="top-panel_new-mission" to="/create">

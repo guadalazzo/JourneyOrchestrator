@@ -14,10 +14,18 @@ nav {
   background-color: $bg-color;
   height: 100vh;
   position: relative;
-
-  article {
-    margin: auto;
-    width: 80%;
-    padding-top: 3rem;
-  }
+}
+.main-content {
+  margin: auto;
+  width: 80%;
+  padding-top: 3rem;
+}
+.new-member {
+  background-color: $gray;
+  color: $white;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-top: 1em;
 }
