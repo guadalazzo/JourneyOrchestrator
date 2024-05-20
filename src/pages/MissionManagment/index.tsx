@@ -11,7 +11,11 @@ import * as Yup from 'yup';
 import { parse } from 'date-fns';
 
 const MissionSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(),
+  name: Yup.string()
+    .matches(/^[A-Za-z ]*$/, 'Only letters are allowed')
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(),
   date: Yup.date()
     .transform(function (value, originalValue) {
       if (this.isType(value)) {
@@ -176,6 +180,8 @@ export default function MissionManagment({ id }: { id?: string }) {
                         <input
                           id="experience"
                           placeholder="experience"
+                          type="number"
+                          min={0}
                           value={member.experience}
                           name="experience"
                           onChange={(e) => handleMemberChange(index, 'experience', e.target.value)}
@@ -208,8 +214,9 @@ export default function MissionManagment({ id }: { id?: string }) {
                           placeholder="age"
                           value={member.age}
                           name="age"
+                          type="number"
+                          min={0}
                           onChange={(e) => handleMemberChange(index, 'age', e.target.value)}
-                          type="text"
                         />
                       </label>
                     )}
@@ -222,8 +229,9 @@ export default function MissionManagment({ id }: { id?: string }) {
                           placeholder="wealth"
                           value={member.wealth}
                           name="wealth"
+                          type="number"
+                          min={0}
                           onChange={(e) => handleMemberChange(index, 'wealth', e.target.value)}
-                          type="text"
                         />
                       </label>
                     )}

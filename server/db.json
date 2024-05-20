@@ -2,9 +2,9 @@
   "missions": [
     {
       "id": "1e34",
-      "name": "new mission",
+      "name": "adasd",
       "destination": "Mars Alpha-110",
-      "date": "10-21-2023",
+      "date": "01/02/2003",
       "members": [
         {
           "type": "pilot",
@@ -12,7 +12,7 @@
           "job": "Navigation"
         },
         {
-          "type": "engineer",
+          "type": "passenger",
           "experience": "0",
           "job": "Solar panels"
         },
@@ -157,7 +157,8 @@
         },
         {
           "type": "passenger",
-          "experience": "0"
+          "experience": "0",
+          "age": "1"
         }
       ]
     }
