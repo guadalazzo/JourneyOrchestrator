@@ -25,3 +25,12 @@ export type Mission = {
   date: string;
   members: Member[] | never[];
 };
+
+export type MissionReducer = {
+  isValid: boolean;
+  errorMessage: string;
+  missions: never[];
+};
+export interface reducer {
+  missionManagment: MissionReducer;
+}

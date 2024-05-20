@@ -1,33 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
-import { Mission, Member } from '../../types/missionManagment.types';
+import { Mission, Member, reducer } from '../../types/missionManagment.types';
 import './style.scss';
 import { validate, reset } from '../../store/missionManagment/missionManagment';
 import { getMission } from '../../services/index';
 import { useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import * as Yup from 'yup';
-import { parse } from 'date-fns';
-
-const MissionSchema = Yup.object().shape({
-  name: Yup.string()
-    .matches(/^[A-Za-z ]*$/, 'Only letters are allowed')
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required(),
-  date: Yup.date()
-    .transform(function (value, originalValue) {
-      if (this.isType(value)) {
-        return value;
-      }
-      const result = parse(originalValue, 'dd/MM/yyyy', new Date());
-      return result;
-    })
-    .typeError('please enter a valid date')
-    .required()
-    .min('1969-11-13', 'Date is too early'),
-});
+import Members from './Members';
+import { MissionSchema } from '../../utils/schema';
 
 export default function MissionManagment({ id }: { id?: string }) {
   const [mission, setMission] = useState<Mission>({
@@ -37,8 +18,14 @@ export default function MissionManagment({ id }: { id?: string }) {
     members: [],
   });
   const [members, setMembers] = useState<Member[]>([{ type: 'engineer', experience: '0', job: 'Navigation' }]);
-  const errorMessage = useSelector((state) => state.missionManagment.errorMessage);
-  const isValid = useSelector((state) => state.missionManagment.isValid);
+  const errorMessage = useSelector<reducer>((state) => {
+    if (state.missionManagment) {
+      return state.missionManagment.errorMessage;
+    } else {
+      return '';
+    }
+  }) as string;
+  const isValid = useSelector<reducer>((state) => state.missionManagment.isValid);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -91,7 +78,7 @@ export default function MissionManagment({ id }: { id?: string }) {
     });
   };
 
-  const handleSubmit = (values: Mission, { setSubmitting }) => {
+  const handleSubmit = (values: Mission, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     setSubmitting(true);
     const payload = {
       ...values,
@@ -101,7 +88,7 @@ export default function MissionManagment({ id }: { id?: string }) {
     if (isValid) setSubmitting(false);
   };
   return (
-    <div className="main-content">
+    <div className="main-content mission-managment">
       <Breadcrumbs name={id ? 'Edit' : 'Create'} />
       {id ? <h2>Edit Mission</h2> : <h2>Configure a new Mission</h2>}
 
@@ -111,16 +98,7 @@ export default function MissionManagment({ id }: { id?: string }) {
         validationSchema={MissionSchema}
         onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting })}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          /* and other goodies */
-        }) => (
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <fieldset className="mission-topinfo">
               <label htmlFor="name" className="field">
@@ -156,103 +134,18 @@ export default function MissionManagment({ id }: { id?: string }) {
                 {errors.date && touched.date && <span className="error-message">{errors.date}</span>}
               </label>
             </fieldset>
-            <div className="member-list">
-              <h3>Members</h3>
-              {members.map((member, index) => {
-                return (
-                  <fieldset key={`${member.type}-${index}`} className="member">
-                    <label className="field">
-                      {member.type === 'passenger' ? 'Name:' : 'Type:'}
-                      <select
-                        value={member.type}
-                        name="type"
-                        onChange={(e) => handleMemberChange(index, 'type', e.target.value)}
-                      >
-                        <option value="pilot">Pilot</option>
-                        <option value="engineer">Engineer</option>
-                        <option value="passenger">Passanger</option>
-                      </select>
-                    </label>
-
-                    {member.type === 'pilot' || member.type === 'engineer' ? (
-                      <label className="field">
-                        Experience
-                        <input
-                          id="experience"
-                          placeholder="experience"
-                          type="number"
-                          min={0}
-                          value={member.experience}
-                          name="experience"
-                          onChange={(e) => handleMemberChange(index, 'experience', e.target.value)}
-                        />
-                      </label>
-                    ) : null}
-
-                    {member.type === 'engineer' && ( //TODO CAMBIAR POR UN SELECT
-                      <label className="field">
-                        Job
-                        <select
-                          id="job"
-                          value={member.job}
-                          name="job"
-                          onChange={(e) => handleMemberChange(index, 'job', e.target.value)}
-                        >
-                          <option>Navigation</option>
-                          <option>Solar panels</option>
-                          <option>Maintenance</option>
-                          <option>Mechanics</option>
-                        </select>
-                      </label>
-                    )}
-
-                    {member.type === 'passenger' && (
-                      <label className="field">
-                        Age
-                        <input
-                          id="age"
-                          placeholder="age"
-                          value={member.age}
-                          name="age"
-                          type="number"
-                          min={0}
-                          onChange={(e) => handleMemberChange(index, 'age', e.target.value)}
-                        />
-                      </label>
-                    )}
-
-                    {member.type === 'passenger' && (
-                      <label className="field">
-                        Wealth
-                        <input
-                          id="wealth"
-                          placeholder="wealth"
-                          value={member.wealth}
-                          name="wealth"
-                          type="number"
-                          min={0}
-                          onChange={(e) => handleMemberChange(index, 'wealth', e.target.value)}
-                        />
-                      </label>
-                    )}
-                    <button type="button" onClick={(e) => handleRemoveMember(index, e)} className="remove-button">
-                      X
-                    </button>
-                  </fieldset>
-                );
-              })}
-
-              <button type="button" onClick={handleAddMember} className="btn">
-                New member
-              </button>
-            </div>
-            <button className="btn" type="submit">
+            <Members
+              members={members}
+              onMemberChange={handleMemberChange}
+              onAddMember={handleAddMember}
+              onRemoveMember={handleRemoveMember}
+            />
+            <button className="btn cta" type="submit">
               {id ? 'Edit' : 'Create'}
             </button>
           </form>
         )}
       </Formik>
-
       {errorMessage && <span className="error-message">{errorMessage}</span>}
     </div>
   );
