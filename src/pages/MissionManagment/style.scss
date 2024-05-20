@@ -19,6 +19,8 @@
 .field {
   display: flex;
   flex-direction: column;
+  min-width: 11em;
+
   input,
   select {
     margin-top: 10px;
@@ -38,6 +40,6 @@
     color: $gray;
     position: absolute;
     top: 40%;
-    right: 0;
+    right: 10px;
   }
 }

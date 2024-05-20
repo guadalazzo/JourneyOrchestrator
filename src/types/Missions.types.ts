@@ -1,5 +1,5 @@
 export type MissionsM = {
-  id: number;
+  id: string;
   name: string;
   crew_count: number;
   destination: string;

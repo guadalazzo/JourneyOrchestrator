@@ -1,3 +1,7 @@
+import MissionManagment from './index';
+import { useParams } from 'react-router-dom';
 export default function EditMission() {
-  return <div></div>;
+  const { id } = useParams();
+
+  return <MissionManagment id={id} />;
 }

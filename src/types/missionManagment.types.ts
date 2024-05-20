@@ -2,11 +2,12 @@ export type Pilot = {
   type: 'pilot';
   experience: string;
 };
+export type Job = 'Navigation' | 'Solar panels' | 'Maintenance' | 'Mechanics';
 
 export type Engineer = {
   type: 'engineer';
   experience: string;
-  job: 'Navigation' | 'Solar panels' | 'Maintenance' | 'Mechanics';
+  job: Job;
 };
 
 export type Passenger = {
@@ -18,6 +19,7 @@ export type Passenger = {
 export type Member = Pilot | Engineer | Passenger;
 
 export type Mission = {
+  id?: string;
   name: string;
   destination: string;
   date: string;

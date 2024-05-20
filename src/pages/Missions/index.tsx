@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import Table from '../../components/Table/Table';
-import { MissionsM } from './Missions.types';
-import './Missions.scss';
+import { Mission } from '../../types/missionManagment.types';
+import './styles.scss';
 import { getMissions } from '../../services';
+import { setMissionsA } from '../../store/missionManagment/missionManagment';
 
 export default function Missions() {
-  const [missions, setMissions] = useState<MissionsM>([]);
+  const [missions, setMissions] = useState<Mission[]>([]);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const loadMissions = async () => {
-    try {
-      const data = await getMissions();
-      setMissions(data);
-    } catch (e) {
-      console.error('error:', e);
-    }
+    const data = await getMissions();
+    setMissions(data);
+    dispatch(setMissionsA(data));
   };
 
   useEffect(() => {

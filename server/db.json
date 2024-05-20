@@ -1,9 +1,144 @@
 {
   "missions": [
-    { "id": 1, "name": "Expedition 2021-11", "crew_count": 5, "destination": "Mars", "date": "20/11/2021" },
-    { "id": 2, "name": "Expedition 2021-10", "crew_count": 10, "destination": "Mars", "date": "18/11/2021" },
-    { "id": 3, "name": "Expedition 2021-08", "crew_count": 19, "destination": "Mars", "date": "18/10/2021" },
-    { "id": 4, "name": "Expedition 2021-03", "crew_count": 9, "destination": "Mars", "date": "02/09/2021" },
-    { "id": 5, "name": "Expedition 2021-01", "crew_count": 10, "destination": "Mars", "date": "01/08/2021" }
+    {
+      "id": "1e34",
+      "name": "new mission",
+      "destination": "Mars Alpha-110",
+      "date": "10-21-2023",
+      "members": [
+        {
+          "type": "pilot",
+          "experience": "10",
+          "job": "Navigation"
+        },
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Solar panels"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "job": "Navigation",
+          "age": "10",
+          "wealth": "100"
+        }
+      ]
+    },
+    {
+      "id": "a17c",
+      "name": "Expedition on",
+      "destination": "Mars Alpha-110",
+      "date": "10-21-2023",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "pilot",
+          "experience": "10",
+          "job": "Navigation"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "job": "Navigation",
+          "age": "10",
+          "wealth": "100"
+        }
+      ]
+    },
+    {
+      "id": "10a6",
+      "name": "Expedition on2",
+      "destination": "Mars Alpha-110",
+      "date": "10-21-2023",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0"
+        },
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Solar panels"
+        },
+        {
+          "type": "pilot",
+          "experience": "10"
+        },
+        {
+          "type": "passenger",
+          "experience": "0"
+        }
+      ]
+    },
+    {
+      "id": "240e",
+      "name": "radsd",
+      "destination": "Mars Alpha-110",
+      "date": "llll",
+      "members": [
+        {
+          "type": "pilot",
+          "experience": "11",
+          "job": "Navigation"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "age": "223",
+          "wealth": "1212"
+        },
+        {
+          "type": "engineer",
+          "experience": "0"
+        }
+      ]
+    },
+    {
+      "id": "ac16",
+      "name": "nueva Mission",
+      "destination": "Mars Alpha-110",
+      "date": "10-21-2024",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "pilot",
+          "experience": "12"
+        },
+        {
+          "type": "passenger",
+          "experience": "0"
+        }
+      ]
+    },
+    {
+      "id": "0ab0",
+      "name": "adsasdas",
+      "destination": "Mars Alpha-110",
+      "date": "asdasdasd",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "10",
+          "job": "Solar panels"
+        },
+        {
+          "type": "pilot",
+          "experience": "23"
+        },
+        {
+          "type": "passenger",
+          "experience": "0"
+        }
+      ]
+    }
   ]
 }

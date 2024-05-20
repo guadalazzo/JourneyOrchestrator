@@ -18,14 +18,22 @@ nav {
 .main-content {
   margin: auto;
   width: 80%;
-  padding-top: 3rem;
+  padding-top: 2rem;
+  h2 {
+    margin-top: 1em;
+  }
 }
-.new-member {
+.btn {
   background-color: $gray;
   color: $white;
   padding: 10px;
   font-weight: 600;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-top: 1em;
+}
+.error-message {
+  color: red;
+  display: block;
   margin-top: 1em;
 }

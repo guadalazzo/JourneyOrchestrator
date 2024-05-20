@@ -1,7 +1,7 @@
 import './Table.scss';
-import { MissionsM } from '../../pages/Missions/Missions.types';
+import { Mission } from '../../types/missionManagment.types';
 
-export default function Table({ missions, handleEdit }: { missions: MissionsM; handleEdit: (id: number) => void }) {
+export default function Table({ missions, handleEdit }: { missions: Mission[]; handleEdit: (id: number) => void }) {
   return (
     <table className="missions-table">
       <thead>
@@ -18,7 +18,7 @@ export default function Table({ missions, handleEdit }: { missions: MissionsM; h
           return (
             <tr className="missions-table_row" key={`${mission.name}-${index}`}>
               <td>{mission.name}</td>
-              <td>{mission.crew_count}</td>
+              <td>{mission.members?.length}</td>
               <td>{mission.destination}</td>
               <td>{mission.date}</td>
               <td>
