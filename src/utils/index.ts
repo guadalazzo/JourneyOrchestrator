@@ -24,6 +24,17 @@ export function convertToDate(dateString: string) {
   return dat;
 }
 
+export function changeDateFormatTo(date: string) {
+  // Example 2019-02-01 to 01/02/2019
+  const [yyyy, mm, dd] = date.split(/-/g);
+  return `${dd}/${mm}/${yyyy}`;
+}
+export function formateForDateInput(date: string) {
+  // Example  01/02/2019 to 2019-02-01
+  const [dd, mm, yyyy] = date.split('/');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export function daysTo(date1: Date, date2: Date) {
   const DifferenceBetweenTime = date2.getTime() - date1.getTime();
   const DifferenceInDays = Math.round(DifferenceBetweenTime / (1000 * 3600 * 24));

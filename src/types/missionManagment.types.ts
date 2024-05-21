@@ -12,7 +12,6 @@ export type Engineer = {
 
 export type Passenger = {
   type: 'passenger';
-  name: string;
   age: number;
   wealth: number;
 };

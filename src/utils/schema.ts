@@ -2,11 +2,7 @@ import * as Yup from 'yup';
 import { parse } from 'date-fns';
 
 export const MissionSchema = Yup.object().shape({
-  name: Yup.string()
-    .matches(/^[A-Za-z ]*$/, 'Only letters are allowed')
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required(),
+  name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(),
   date: Yup.date()
     .transform(function (value, originalValue) {
       if (this.isType(value)) {

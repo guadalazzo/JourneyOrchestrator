@@ -119,6 +119,52 @@
           "age": "1"
         }
       ]
+    },
+    {
+      "id": "1882",
+      "name": "Example 2",
+      "destination": "Mars Alpha-110",
+      "date": "01/02/2019",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "pilot",
+          "experience": "10"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "age": "20",
+          "wealth": "100"
+        }
+      ]
+    },
+    {
+      "id": "98f3",
+      "name": "nueva Mission",
+      "destination": "Mars Alpha-110",
+      "date": "09/02/2024",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "pilot",
+          "experience": "12"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "age": "20",
+          "wealth": "100"
+        }
+      ]
     }
   ]
 }

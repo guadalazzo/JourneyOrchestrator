@@ -17,7 +17,7 @@ Install packages:
 
 `yarn`
 
-Run react
+Run react server
 
 `yarn dev`
 

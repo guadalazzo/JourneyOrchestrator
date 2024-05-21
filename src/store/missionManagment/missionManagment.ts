@@ -44,7 +44,7 @@ export const missionManagmentReducer = createSlice({
         const thePilot = pilotList[0];
         const hasEnoughExp = Number(thePilot.experience) >= 10;
         if (!hasEnoughExp) {
-          state.errorMessage = 'The Pilot has Not enought experience';
+          state.errorMessage = 'The Pilot has not enought experience';
           state.isValid = false;
           return;
         }

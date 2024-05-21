@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { Mission, Member, reducer } from '../../types/missionManagment.types';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Members from './Members';
 import { MissionSchema } from '../../utils/schema';
+import { changeDateFormatTo, formateForDateInput } from '../../utils';
 
 export default function MissionManagment({ id }: { id?: string }) {
   const [mission, setMission] = useState<Mission>({
@@ -38,6 +39,7 @@ export default function MissionManagment({ id }: { id?: string }) {
 
   const loadMission = async (id: string) => {
     const data = await getMission(id);
+    data.date = formateForDateInput(data.date);
     setMission(data);
     setMembers(data.members);
   };
@@ -78,15 +80,22 @@ export default function MissionManagment({ id }: { id?: string }) {
     });
   };
 
-  const handleSubmit = (values: Mission, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
-    setSubmitting(true);
-    const payload = {
-      ...values,
-      members: [...members],
-    };
-    dispatch(validate(payload));
-    if (isValid) setSubmitting(false);
-  };
+  const handleSubmit = useCallback(
+    (values: Mission, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+      setSubmitting(true);
+      const formattedDate = changeDateFormatTo(values.date);
+      const payload = {
+        ...values,
+        date: formattedDate,
+        members: [...members],
+      };
+
+      dispatch(validate(payload));
+      if (isValid) setSubmitting(false);
+    },
+    [members],
+  );
+
   return (
     <div className="main-content mission-managment">
       <Breadcrumbs name={id ? 'Edit' : 'Create'} />
@@ -124,7 +133,8 @@ export default function MissionManagment({ id }: { id?: string }) {
               <label htmlFor="date" className="field">
                 Departure
                 <input
-                  type="text"
+                  type="date"
+                  placeholder="dd/mm/yyyy"
                   value={values.date}
                   name="date"
                   onChange={handleChange}
