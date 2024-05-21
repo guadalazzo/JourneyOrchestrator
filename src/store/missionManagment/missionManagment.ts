@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Member, Job } from '../../types/missionManagment.types';
+import { Member, Job, Pilot, Engineer, Passenger } from '../../types/missionManagment.types';
 import { hasDuplicates } from '../../utils';
 import { createNewMission, updateMission } from '../../services/index';
 import { Mission } from '../../types/missionManagment.types';
+import { MEMBER_TYPES } from '../../utils/consts';
 
 async function createNew(payload: Mission) {
   await createNewMission(payload);
@@ -29,7 +30,7 @@ export const missionManagmentReducer = createSlice({
       if (action.payload.members.length) {
         // List of pilots
         const members = action.payload.members;
-        const pilotList = members.filter((member: Member) => member.type === 'pilot');
+        const pilotList = members.filter((member: Pilot) => member.type === MEMBER_TYPES.PILOT);
         if (!pilotList.length) {
           state.errorMessage = 'No pilot in the mission';
           state.isValid = false;
@@ -51,8 +52,8 @@ export const missionManagmentReducer = createSlice({
         // Check engineers
         // list of jobs
         const jobs: Job[] = [];
-        members.forEach((member: Member) => {
-          if (member.type === 'engineer') {
+        members.forEach((member: Engineer) => {
+          if (member.type === MEMBER_TYPES.ENGINEER) {
             jobs.push(member.job);
           }
         });
@@ -61,7 +62,7 @@ export const missionManagmentReducer = createSlice({
           state.errorMessage = 'The engineers jobs are duplicated';
           return;
         }
-        const passengers = members.filter((member: Member) => member.type === 'passenger');
+        const passengers = members.filter((member: Passenger) => member.type === MEMBER_TYPES.PASSENGER);
         if (!passengers.length) {
           state.errorMessage = 'No passengers added to the mission';
           state.isValid = false;

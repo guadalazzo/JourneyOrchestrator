@@ -1,5 +1,5 @@
 import { Member } from '../../types/missionManagment.types';
-
+import { MEMBER_TYPES } from '../../utils/consts';
 interface MemberProps {
   members: Member[];
   onMemberChange: (index: number, name: string, value: string) => void;
@@ -14,15 +14,15 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
         return (
           <fieldset key={`${member.type}-${index}`} className="member">
             <label className="field">
-              {member.type === 'passenger' ? 'Name:' : 'Type:'}
+              {member.type === MEMBER_TYPES.ENGINEER ? 'Name:' : 'Type:'}
               <select value={member.type} name="type" onChange={(e) => onMemberChange(index, 'type', e.target.value)}>
-                <option value="pilot">Pilot</option>
-                <option value="engineer">Engineer</option>
-                <option value="passenger">Passanger</option>
+                <option value={MEMBER_TYPES.PILOT}>Pilot</option>
+                <option value={MEMBER_TYPES.ENGINEER}>Engineer</option>
+                <option value={MEMBER_TYPES.PASSENGER}>Passenger</option>
               </select>
             </label>
 
-            {member.type === 'pilot' || member.type === 'engineer' ? (
+            {member.type === MEMBER_TYPES.PILOT || member.type === MEMBER_TYPES.ENGINEER ? (
               <label className="field">
                 Experience
                 <input
@@ -37,7 +37,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </label>
             ) : null}
 
-            {member.type === 'engineer' && ( //TODO CAMBIAR POR UN SELECT
+            {member.type === MEMBER_TYPES.ENGINEER && ( //TODO CAMBIAR POR UN SELECT
               <label className="field">
                 Job
                 <select
@@ -54,7 +54,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </label>
             )}
 
-            {member.type === 'passenger' && (
+            {member.type === MEMBER_TYPES.PASSENGER && (
               <label className="field">
                 Age
                 <input
@@ -69,7 +69,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </label>
             )}
 
-            {member.type === 'passenger' && (
+            {member.type === MEMBER_TYPES.PASSENGER && (
               <label className="field">
                 Wealth
                 <input

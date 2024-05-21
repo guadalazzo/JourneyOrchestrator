@@ -1,8 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
+import { Formik } from 'formik';
 import { Mission, Member, reducer } from '../../types/missionManagment.types';
-import './style.scss';
 import { validate, reset } from '../../store/missionManagment/missionManagment';
 import { getMission } from '../../services/index';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +9,8 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import Members from './Members';
 import { MissionSchema } from '../../utils/schema';
 import { changeDateFormatTo, formateForDateInput } from '../../utils';
+import { ROUTES } from '../../utils/consts';
+import './style.scss';
 
 export default function MissionManagment({ id }: { id?: string }) {
   const [mission, setMission] = useState<Mission>({
@@ -56,7 +57,7 @@ export default function MissionManagment({ id }: { id?: string }) {
 
   useEffect(() => {
     if (isValid) {
-      navigate('/');
+      navigate(ROUTES.BASE_URL);
     }
   }, [isValid]);
 

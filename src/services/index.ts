@@ -1,8 +1,5 @@
 import { Mission } from '../types/missionManagment.types';
-const API_URL = 'http://localhost:3000';
-const headers = {
-  headers: { 'Content-Type': 'application/json' },
-};
+import { API_URL, headers, METHODS } from '../utils/consts';
 
 export const getMissions = async () => {
   try {
@@ -23,11 +20,12 @@ export const getMission = async (id: string) => {
     console.error('error:', e);
   }
 };
+
 export const updateMission = async (id: string, payload: Mission) => {
   try {
     const requestOptions = {
       ...headers,
-      method: 'PUT',
+      method: METHODS.PUT,
       body: JSON.stringify(payload),
     };
     const missionsResponse = await fetch(`${API_URL}/missions/${id}`, requestOptions);
@@ -37,11 +35,12 @@ export const updateMission = async (id: string, payload: Mission) => {
     console.error('error:', e);
   }
 };
+
 export const createNewMission = async (payload: Mission) => {
   try {
     const requestOptions = {
       ...headers,
-      method: 'POST',
+      method: METHODS.POST,
       body: JSON.stringify(payload),
     };
     const missionsResponse = await fetch(`${API_URL}/missions`, requestOptions);

@@ -27,6 +27,46 @@ Move to /server folder
 
 `cd server`
 
-mock with json-server:
+run mock with json-server:
 
 `run npx json-server db.json`
+
+Unit Testing - Jest
+
+`yarn test`
+
+# Missions
+
+### Base url - List of Missions:
+
+Add a new mission or edit existing ones.
+
+Search by name
+
+Date and Days to mission, or departure mission
+
+![Main screen](public/assets/Missions.png 'Missions')
+
+### Create page - Add a new Mission:
+
+Mission name and departure date are required
+
+A mission must have exactly 1 pilot
+
+Pilot should have at least 10 years of experience
+
+All engineers have different job (can't have 2 engineers with the same job)
+
+At least 1 passenger
+
+![Create](public/assets/Create.png 'Create')
+
+### Edit page - Edit a Mission:
+
+Mission name and departure can be edited
+
+Members can be added and removed
+
+Same validations as create a mission page
+
+![Edit](public/assets/Edit.png 'Edit')

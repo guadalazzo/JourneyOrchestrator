@@ -2,18 +2,18 @@
   "missions": [
     {
       "id": "1e34",
-      "name": "adasd",
+      "name": "new name 2",
       "destination": "Mars Alpha-110",
       "date": "01/09/2026",
       "members": [
         {
-          "type": "pilot",
+          "type": "engineer",
           "experience": "10",
           "job": "Navigation"
         },
         {
-          "type": "passenger",
-          "experience": "0",
+          "type": "pilot",
+          "experience": "12",
           "job": "Solar panels"
         },
         {
