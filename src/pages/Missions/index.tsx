@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import Table from '../../components/Table/Table';
-import { Mission } from '../../types/missionManagment.types';
+import { CreatedMission } from '../../types/missionManagment.types';
 import './styles.scss';
 import { getMissions } from '../../services';
 import { setMissionsA } from '../../store/missionManagment/missionManagment';
 
 export default function Missions() {
-  const [missions, setMissions] = useState<Mission[]>([]);
+  const [missions, setMissions] = useState<CreatedMission[]>([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loadMissions = async () => {
@@ -21,7 +21,7 @@ export default function Missions() {
     loadMissions();
   }, []);
 
-  const handleEdit = (id: number) => {
+  const handleEdit = (id: string) => {
     navigate(`/edit/${id}`);
   };
 

@@ -1,16 +1,37 @@
+import { useEffect, useState, useMemo } from 'react';
 import './Table.scss';
-import { Mission } from '../../types/missionManagment.types';
-import { useState } from 'react';
+import { CreatedMission } from '../../types/missionManagment.types';
+import { debounce } from '../../utils';
+import DateRow from './DateRow';
 
-export default function Table({ missions, handleEdit }: { missions: Mission[]; handleEdit: (id: number) => void }) {
+export default function Table({
+  missions,
+  handleEdit,
+}: {
+  missions: CreatedMission[];
+  handleEdit: (id: string) => void;
+}) {
   const [missionsName, setMissionName] = useState('');
+  const [missionsF, setMissionsF] = useState(missions);
+
+  useEffect(() => {
+    setMissionsF(missions);
+  }, [missions]);
+
+  const filterMissions = (name: string) => {
+    const lowerCaseName = name.toLowerCase();
+    const filteredMissions = missions.filter((mission) => {
+      const lowerCaseMissionName = mission.name.toLowerCase();
+      return lowerCaseMissionName.includes(lowerCaseName);
+    });
+    setMissionsF(filteredMissions);
+  };
+  // Delays the new filter call 400 sec
+  const debouncedFilterMissions = useMemo(() => debounce(filterMissions, 400), [missions, missionsName]);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMissionName(e.target.value);
+    debouncedFilterMissions(e.target.value);
   };
-  const filteredMissions = missions.filter((product) => {
-    // TODO implement Debounce
-    return product.name.includes(missionsName);
-  });
 
   return (
     <table className="missions-table">
@@ -36,13 +57,15 @@ export default function Table({ missions, handleEdit }: { missions: Mission[]; h
         </tr>
       </thead>
       <tbody>
-        {filteredMissions?.map((mission, index) => {
+        {missionsF?.map((mission, index) => {
           return (
             <tr className="missions-table_row" key={`${mission.name}-${index}`}>
               <td>{mission.name}</td>
               <td>{mission.members?.length}</td>
               <td>{mission.destination}</td>
-              <td>{mission.date}</td>
+              <td>
+                <DateRow date={mission.date} />
+              </td>
               <td>
                 <button onClick={() => handleEdit(mission.id)}>
                   <img src="public/assets/edit.svg" alt="edit"></img>
@@ -51,7 +74,7 @@ export default function Table({ missions, handleEdit }: { missions: Mission[]; h
             </tr>
           );
         })}
-        {!filteredMissions.length && <div>No results</div>}
+        {!missionsF.length && <div className="empty-state">No results</div>}
       </tbody>
     </table>
   );

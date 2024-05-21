@@ -1,8 +1,9 @@
 @import '../variables';
 nav {
   height: 65px;
-  background-color: $white;
+  background-color: $secondary;
   border-bottom: 1px solid lightgray;
+  color: $white;
   .main-title {
     width: 100%;
     margin-left: 3rem;

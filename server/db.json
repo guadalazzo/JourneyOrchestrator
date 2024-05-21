@@ -4,7 +4,7 @@
       "id": "1e34",
       "name": "adasd",
       "destination": "Mars Alpha-110",
-      "date": "01/02/2003",
+      "date": "01/09/2026",
       "members": [
         {
           "type": "pilot",
@@ -29,7 +29,7 @@
       "id": "a17c",
       "name": "Expedition on",
       "destination": "Mars Alpha-110",
-      "date": "10-21-2023",
+      "date": "01/12/2024",
       "members": [
         {
           "type": "engineer",
@@ -54,7 +54,7 @@
       "id": "10a6",
       "name": "Expedition on2",
       "destination": "Mars Alpha-110",
-      "date": "10-21-2023",
+      "date": "20/07/2024",
       "members": [
         {
           "type": "engineer",
@@ -79,7 +79,7 @@
       "id": "240e",
       "name": "radsd",
       "destination": "Mars Alpha-110",
-      "date": "llll",
+      "date": "24/09/2024",
       "members": [
         {
           "type": "pilot",
@@ -94,48 +94,6 @@
         },
         {
           "type": "engineer",
-          "experience": "0"
-        }
-      ]
-    },
-    {
-      "id": "ac16",
-      "name": "nueva Mission",
-      "destination": "Mars Alpha-110",
-      "date": "10-21-2024",
-      "members": [
-        {
-          "type": "engineer",
-          "experience": "0",
-          "job": "Navigation"
-        },
-        {
-          "type": "pilot",
-          "experience": "12"
-        },
-        {
-          "type": "passenger",
-          "experience": "0"
-        }
-      ]
-    },
-    {
-      "id": "0ab0",
-      "name": "adsasdas",
-      "destination": "Mars Alpha-110",
-      "date": "asdasdasd",
-      "members": [
-        {
-          "type": "engineer",
-          "experience": "10",
-          "job": "Solar panels"
-        },
-        {
-          "type": "pilot",
-          "experience": "23"
-        },
-        {
-          "type": "passenger",
           "experience": "0"
         }
       ]

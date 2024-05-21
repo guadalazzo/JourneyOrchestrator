@@ -25,7 +25,13 @@ export type Mission = {
   date: string;
   members: Member[] | never[];
 };
-
+export type CreatedMission = {
+  id: string;
+  name: string;
+  destination: string;
+  date: string;
+  members: Member[] | never[];
+};
 export type MissionReducer = {
   isValid: boolean;
   errorMessage: string;
