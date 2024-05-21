@@ -7,5 +7,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+# Jest coverage directory
+/coverage.data
+/coverage/
+
 # local env files
 .env*.local
