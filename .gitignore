@@ -8,8 +8,8 @@
 .yarn/install-state.gz
 
 # Jest coverage directory
-/coverage.data
-/coverage/
-
+.coverage*
+coverage*
+/coverage*
 # local env files
 .env*.local
