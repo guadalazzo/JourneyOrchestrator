@@ -15,31 +15,43 @@ Open the terminal in the repository location
 
 Install packages:
 
-`yarn`
+```bash
+ yarn
+```
 
 Run react server
 
-`yarn dev`
+```bash
+yarn dev
+```
 
-Open a second terminal without closing the first one,
+Open a second terminal without closing the first one
 
 Move to /server folder
 
-`cd server`
+```bash
+cd server
+```
 
 run mock with json-server:
 
-`npx json-server db.json`
+```bash
+npx json-server db.json
+```
+
+open: http://localhost:5174/
 
 Unit Testing - Jest
 
-`yarn test`
+```bash
+yarn test
+```
 
 # Missions
 
 ### Base url - List of Missions:
 
-Add a new mission or edit existing ones.
+Add a new mission, deletin or edit existing ones.
 
 Search by name
 

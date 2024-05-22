@@ -5,7 +5,7 @@ import { Mission, Member, reducer } from '../../types/missionManagment.types';
 import { validate, reset } from '../../store/missionManagment/missionManagment';
 import { getMission } from '../../services/index';
 import { useNavigate } from 'react-router-dom';
-import Breadcrumbs from '../../components/Breadcrumbs';
+import Breadcrumbs from '../Breadcrumbs';
 import Members from './Members';
 import { MissionSchema } from '../../utils/schema';
 import { changeDateFormatTo, formateForDateInput } from '../../utils';

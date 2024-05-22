@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Missions from './pages/Missions';
 import Layout from './components/Layout/Layout';
-import CreateMission from './pages/MissionManagment/CreateMission';
-import EditMission from './pages/MissionManagment/EditMission';
+import CreateMission from './pages/CreateMission';
+import EditMission from './pages/EditMission';
 import { Provider } from 'react-redux';
 import store from './store';
 import { ROUTES } from './utils/consts';
