@@ -35,6 +35,19 @@ export const updateMission = async (id: string, payload: Mission) => {
     console.error('error:', e);
   }
 };
+export const deleteMission = async (id: string) => {
+  try {
+    const requestOptions = {
+      ...headers,
+      method: METHODS.DELETE,
+    };
+    const missionsResponse = await fetch(`${API_URL}/missions/${id}`, requestOptions);
+    const parsedRes = await missionsResponse.json();
+    return parsedRes;
+  } catch (e) {
+    console.error('error:', e);
+  }
+};
 
 export const createNewMission = async (payload: Mission) => {
   try {

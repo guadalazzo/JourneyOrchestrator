@@ -7,9 +7,11 @@ import DateRow from './DateRow';
 export default function Table({
   missions,
   handleEdit,
+  handleDelete,
 }: {
   missions: CreatedMission[];
   handleEdit: (id: string) => void;
+  handleDelete: (id: string) => void;
 }) {
   const [missionsName, setMissionName] = useState('');
   const [missionsF, setMissionsF] = useState(missions);
@@ -67,14 +69,17 @@ export default function Table({
                 <DateRow date={mission.date} />
               </td>
               <td>
-                <button onClick={() => handleEdit(mission.id)}>
+                <button className="btn-edit" onClick={() => handleEdit(mission.id)}>
                   <img src="public/assets/edit.svg" alt="edit"></img>
+                </button>
+                <button className="btn-delete" onClick={() => handleDelete(mission.id)}>
+                  <img src="public/assets/delete.svg" alt="delete"></img>
                 </button>
               </td>
             </tr>
           );
         })}
-        {!missionsF.length && <div className="empty-state">No results</div>}
+        {!missionsF?.length && <div className="empty-state">No results</div>}
       </tbody>
     </table>
   );

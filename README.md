@@ -29,7 +29,7 @@ Move to /server folder
 
 run mock with json-server:
 
-`run npx json-server db.json`
+`npx json-server db.json`
 
 Unit Testing - Jest
 

@@ -12,8 +12,8 @@ export type Engineer = {
 
 export type Passenger = {
   type: 'passenger';
-  age: number;
-  wealth: number;
+  age: string;
+  wealth: string;
 };
 export type Member = Pilot | Engineer | Passenger;
 

@@ -13,7 +13,7 @@
         },
         {
           "type": "pilot",
-          "experience": "12",
+          "experience": "10",
           "job": "Solar panels"
         },
         {
@@ -76,51 +76,6 @@
       ]
     },
     {
-      "id": "240e",
-      "name": "radsd",
-      "destination": "Mars Alpha-110",
-      "date": "24/09/2024",
-      "members": [
-        {
-          "type": "pilot",
-          "experience": "11",
-          "job": "Navigation"
-        },
-        {
-          "type": "passenger",
-          "experience": "0",
-          "age": "223",
-          "wealth": "1212"
-        },
-        {
-          "type": "engineer",
-          "experience": "0"
-        }
-      ]
-    },
-    {
-      "id": "8a15",
-      "name": "radsd",
-      "destination": "Mars Alpha-110",
-      "date": "01/02/2002",
-      "members": [
-        {
-          "type": "engineer",
-          "experience": "0",
-          "job": "Navigation"
-        },
-        {
-          "type": "pilot",
-          "experience": "13"
-        },
-        {
-          "type": "passenger",
-          "experience": "0",
-          "age": "1"
-        }
-      ]
-    },
-    {
       "id": "1882",
       "name": "Example 2",
       "destination": "Mars Alpha-110",
@@ -163,6 +118,30 @@
           "experience": "0",
           "age": "20",
           "wealth": "100"
+        }
+      ]
+    },
+    {
+      "id": "532b",
+      "name": "mars-mission-1",
+      "destination": "Mars Alpha-100",
+      "date": "04/07/1992",
+      "members": [
+        {
+          "type": "pilot",
+          "experience": "13",
+          "job": "Navigation"
+        },
+        {
+          "type": "engineer",
+          "experience": "2",
+          "job": "Solar panels"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "age": "30",
+          "wealth": "10000"
         }
       ]
     }

@@ -38,11 +38,16 @@ export default function MissionManagment({ id }: { id?: string }) {
     members: [],
   };
 
+  // Load mission by id
   const loadMission = async (id: string) => {
-    const data = await getMission(id);
-    data.date = formateForDateInput(data.date);
-    setMission(data);
-    setMembers(data.members);
+    try {
+      const data = await getMission(id);
+      data.date = formateForDateInput(data.date);
+      setMission(data);
+      setMembers(data.members);
+    } catch (e) {
+      console.error('Failed to load mission:', e);
+    }
   };
 
   useEffect(() => {

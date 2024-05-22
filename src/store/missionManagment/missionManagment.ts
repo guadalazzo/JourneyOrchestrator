@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Member, Job, Pilot, Engineer, Passenger } from '../../types/missionManagment.types';
+import { Job, Pilot, Engineer, Passenger } from '../../types/missionManagment.types';
 import { hasDuplicates } from '../../utils';
 import { createNewMission, updateMission } from '../../services/index';
 import { Mission } from '../../types/missionManagment.types';

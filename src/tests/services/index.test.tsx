@@ -1,4 +1,5 @@
-import { getMissions } from '../../services';
+import { deleteMission, getMissions, getMission, updateMission, createNewMission } from '../../services';
+import { API_URL, METHODS } from '../../utils/consts';
 
 describe('Service API Functions', () => {
   beforeEach(() => {
@@ -21,10 +22,59 @@ describe('Service API Functions', () => {
   it('getMissions should fetch missions successfully', async () => {
     const mockResponse = [{ id: '1', name: 'Mission 1' }];
     mockFetch.mockResolvedValueOnce(mockFetchResponse(mockResponse));
-
     const missions = await getMissions();
-
     expect(missions).toEqual(mockResponse);
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:3000/missions');
+    expect(mockFetch).toHaveBeenCalledWith(`${API_URL}/missions`);
+  });
+
+  it('createNewMission ', async () => {
+    const mockResponse = {
+      name: 'Mission 2',
+      date: '10/03/2024',
+      destination: 'Pluton',
+      members: [],
+    };
+    mockFetch.mockResolvedValueOnce(mockFetchResponse(undefined));
+    await createNewMission(mockResponse);
+    expect(mockFetch).toHaveBeenCalledWith(`${API_URL}/missions`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: METHODS.POST,
+      body: '{"name":"Mission 2","date":"10/03/2024","destination":"Pluton","members":[]}',
+    });
+  });
+
+  it('updateMission by id', async () => {
+    const mockResponse = {
+      id: '1',
+      name: 'Mission 1',
+      date: '10/09/2024',
+      destination: 'Pluton',
+      members: [],
+    };
+    mockFetch.mockResolvedValueOnce(mockFetchResponse(undefined));
+    await updateMission(mockResponse.id, mockResponse);
+    expect(mockFetch).toHaveBeenCalledWith(`${API_URL}/missions/${mockResponse.id}`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: METHODS.PUT,
+      body: '{"id":"1","name":"Mission 1","date":"10/09/2024","destination":"Pluton","members":[]}',
+    });
+  });
+
+  it('getMission by id', async () => {
+    mockFetch.mockResolvedValueOnce(mockFetchResponse(undefined));
+
+    await getMission('2cd');
+    expect(mockFetch).toHaveBeenCalledWith(`${API_URL}/missions/2cd`);
+  });
+
+  it('deleteMission should delete mission successfully', async () => {
+    mockFetch.mockResolvedValueOnce(mockFetchResponse(undefined));
+
+    await deleteMission('2er');
+
+    expect(mockFetch).toHaveBeenCalledWith(`${API_URL}/missions/2er`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: METHODS.DELETE,
+    });
   });
 });

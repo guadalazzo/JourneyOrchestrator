@@ -7,8 +7,13 @@ const config: Config = {
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest', // Add this line to handle TypeScript files
+    '^.+\\.scss$': 'jest-css-modules-transform',
   },
-  testEnvironment: 'jest-environment-node', // Commonly used for React projects
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  testEnvironment: 'jest-environment-jsdom',
+  moduleNameMapper: {
+    '\\.(css|scss)$': '<rootDir>/src/tests/_mocks_/stylemocks.ts',
+  },
 };
 
 export default config;

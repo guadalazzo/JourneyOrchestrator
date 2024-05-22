@@ -4,7 +4,7 @@ export const headers = {
   headers: { 'Content-Type': 'application/json' },
 };
 
-export const METHODS = { POST: 'POST', PUT: 'PUT' };
+export const METHODS = { GET: 'GET', POST: 'POST', PUT: 'PUT', DELETE: 'DELETE' };
 export const ROUTES = {
   BASE_URL: '/',
   EDIT: '/edit/:id',
