@@ -51,7 +51,7 @@ yarn test
 
 ### Base url - List of Missions:
 
-Add a new mission, deletin or edit existing ones.
+Add a new mission, delete or edit existing ones.
 
 Search by name
 
