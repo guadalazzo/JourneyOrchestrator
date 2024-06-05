@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://guadalazzo.github.io/journeyCreator",
+  "homepage": "https://guadalazzo.github.io/JourneyOrchestrator/",
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "vite",
