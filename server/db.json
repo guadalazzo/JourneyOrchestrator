@@ -22,6 +22,10 @@
           "job": "Navigation",
           "age": "10",
           "wealth": "100"
+        },
+        {
+          "type": "engineer",
+          "experience": "0"
         }
       ]
     },
@@ -142,6 +146,33 @@
           "experience": "0",
           "age": "30",
           "wealth": "10000"
+        }
+      ]
+    },
+    {
+      "id": "1d9d",
+      "name": "asdasdsad",
+      "destination": "Mars Alpha-110",
+      "date": "01/02/1990",
+      "members": [
+        {
+          "type": "engineer",
+          "experience": "0",
+          "job": "Navigation"
+        },
+        {
+          "type": "engineer",
+          "experience": "0"
+        },
+        {
+          "type": "pilot",
+          "experience": "10"
+        },
+        {
+          "type": "passenger",
+          "experience": "0",
+          "age": "20",
+          "wealth": "100"
         }
       ]
     }
