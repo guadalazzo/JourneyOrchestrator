@@ -37,9 +37,12 @@ jobs:
       - name: Install Rollup and plugins
         run: npm install rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs --save-dev
 
-      - run: npm run build --if-present
+      - run: npm run build
 
       - run: npm test
+
+      - name: Verify build output
+        run: ls -la build
 
       - name: Deploy with gh-pages
         run: |
