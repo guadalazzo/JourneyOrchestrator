@@ -29,6 +29,9 @@ jobs:
           rm -f package-lock.json
 
       - name: Install dependencies
+        run: npm install
+
+      - name: Install CI
         run: npm ci
 
       - name: Install Rollup and plugins
