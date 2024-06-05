@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={ROUTES.BASE_URL} element={<Layout />}>
-            <Route index element={<Missions />} />
+            <Route path="/JourneyOrchestrator/" element={<Missions />} />
             <Route path={ROUTES.EDIT} element={<EditMission />} />
             <Route path={ROUTES.CREATE} element={<CreateMission />} />
           </Route>

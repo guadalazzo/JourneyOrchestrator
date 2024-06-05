@@ -7,8 +7,9 @@ export const headers = {
 export const METHODS = { GET: 'GET', POST: 'POST', PUT: 'PUT', DELETE: 'DELETE' };
 export const ROUTES = {
   BASE_URL: '/',
-  EDIT: '/edit/:id',
-  CREATE: '/create',
+  BASE_URL_APP: '/JourneyOrchestrator',
+  EDIT: '/JourneyOrchestrator/edit/:id',
+  CREATE: '/JourneyOrchestrator/create',
 };
 export const MEMBER_TYPES = {
   ENGINEER: 'engineer',

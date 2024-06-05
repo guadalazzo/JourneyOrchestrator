@@ -62,7 +62,7 @@ export default function MissionManagment({ id }: { id?: string }) {
 
   useEffect(() => {
     if (isValid) {
-      navigate(ROUTES.BASE_URL);
+      navigate(ROUTES.BASE_URL_APP);
     }
   }, [isValid, navigate]);
 
