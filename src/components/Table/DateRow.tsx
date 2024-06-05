@@ -15,7 +15,7 @@ export default function DateRow({ date }: { date: string }) {
     } else {
       setRemainginDays(days.toString());
     }
-  }, []);
+  }, [date]);
 
   return (
     <div className={departed ? 'departed' : ''}>

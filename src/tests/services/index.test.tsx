@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { deleteMission, getMissions, getMission, updateMission, createNewMission } from '../../services';
 import { API_URL, METHODS } from '../../utils/consts';
 

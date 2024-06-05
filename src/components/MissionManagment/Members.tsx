@@ -1,11 +1,24 @@
-import { Member } from '../../types/missionManagment.types';
+import { Engineer, Passenger, Pilot, Member } from '../../types/missionManagment.types';
 import { MEMBER_TYPES } from '../../utils/consts';
 interface MemberProps {
   members: Member[];
-  onMemberChange: (index: number, name: string, value: string) => void;
-  onRemoveMember: (index: number, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onMemberChange: (_: number, _1: string, _2: string) => void;
+  onRemoveMember: (_: number, _1: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onAddMember: () => void;
 }
+// Type guards
+function isPilot(member: Engineer | Passenger | Pilot): member is Pilot {
+  return member.type === MEMBER_TYPES.PILOT;
+}
+
+function isEngineer(member: Engineer | Passenger | Pilot): member is Engineer {
+  return member.type === MEMBER_TYPES.ENGINEER;
+}
+
+function isPassanger(member: Engineer | Passenger | Pilot): member is Passenger {
+  return member.type === MEMBER_TYPES.PASSENGER;
+}
+
 export default function Members({ members, onMemberChange, onRemoveMember, onAddMember }: MemberProps) {
   return (
     <div className="member-list">
@@ -22,7 +35,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </select>
             </label>
 
-            {member.type === MEMBER_TYPES.PILOT || member.type === MEMBER_TYPES.ENGINEER ? (
+            {(isPilot(member) || isEngineer(member)) && (
               <label className="field">
                 Experience
                 <input
@@ -35,9 +48,9 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
                   onChange={(e) => onMemberChange(index, 'experience', e.target.value)}
                 />
               </label>
-            ) : null}
+            )}
 
-            {member.type === MEMBER_TYPES.ENGINEER && ( //TODO CAMBIAR POR UN SELECT
+            {isEngineer(member) && (
               <label className="field">
                 Job
                 <select
@@ -54,7 +67,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </label>
             )}
 
-            {member.type === MEMBER_TYPES.PASSENGER && (
+            {isPassanger(member) && (
               <label className="field">
                 Age
                 <input
@@ -69,7 +82,7 @@ export default function Members({ members, onMemberChange, onRemoveMember, onAdd
               </label>
             )}
 
-            {member.type === MEMBER_TYPES.PASSENGER && (
+            {isPassanger(member) && (
               <label className="field">
                 Wealth
                 <input

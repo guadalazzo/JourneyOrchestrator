@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @jest-environment jsdom
  */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
@@ -8,7 +10,6 @@ import Missions from '../../../pages/Missions/index.tsx';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import { ROUTES } from '../../../utils/consts';
 import { CreatedMission } from '../../../types/missionManagment.types';
 
 const mockStore = configureStore([]);

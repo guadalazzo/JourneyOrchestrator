@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import './Table.scss';
 import { CreatedMission } from '../../types/missionManagment.types';
 import { debounce } from '../../utils';
@@ -10,8 +10,8 @@ export default function Table({
   handleDelete,
 }: {
   missions: CreatedMission[];
-  handleEdit: (id: string) => void;
-  handleDelete: (id: string) => void;
+  handleEdit: (_: string) => void;
+  handleDelete: (_: string) => void;
 }) {
   const [missionsName, setMissionName] = useState('');
   const [missionsF, setMissionsF] = useState(missions);
@@ -20,16 +20,19 @@ export default function Table({
     setMissionsF(missions);
   }, [missions]);
 
-  const filterMissions = (name: string) => {
-    const lowerCaseName = name.toLowerCase();
-    const filteredMissions = missions.filter((mission) => {
-      const lowerCaseMissionName = mission.name.toLowerCase();
-      return lowerCaseMissionName.includes(lowerCaseName);
-    });
-    setMissionsF(filteredMissions);
-  };
+  const filterMissions = useCallback(
+    (name: string) => {
+      const lowerCaseName = name.toLowerCase();
+      const filteredMissions = missions.filter((mission) => {
+        const lowerCaseMissionName = mission.name.toLowerCase();
+        return lowerCaseMissionName.includes(lowerCaseName);
+      });
+      setMissionsF(filteredMissions);
+    },
+    [missions],
+  );
   // Delays the new filter call 400 sec
-  const debouncedFilterMissions = useMemo(() => debounce(filterMissions, 400), [missions, missionsName]);
+  const debouncedFilterMissions = useMemo(() => debounce(filterMissions, 400), [filterMissions]);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMissionName(e.target.value);
     debouncedFilterMissions(e.target.value);

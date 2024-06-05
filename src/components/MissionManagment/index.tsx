@@ -31,7 +31,7 @@ export default function MissionManagment({ id }: { id?: string }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  let initialValues: Mission = {
+  const initialValues: Mission = {
     name: '',
     destination: 'Mars Alpha-110',
     date: '',
@@ -58,13 +58,13 @@ export default function MissionManagment({ id }: { id?: string }) {
       // on unmount
       dispatch(reset());
     };
-  }, []);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (isValid) {
       navigate(ROUTES.BASE_URL);
     }
-  }, [isValid]);
+  }, [isValid, navigate]);
 
   const handleMemberChange = (index: number, name: string, value: string) => {
     setMembers((prevMembers) => {
@@ -87,7 +87,7 @@ export default function MissionManagment({ id }: { id?: string }) {
   };
 
   const handleSubmit = useCallback(
-    (values: Mission, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+    (values: Mission, { setSubmitting }: { setSubmitting: (_: boolean) => void }) => {
       setSubmitting(true);
       const formattedDate = changeDateFormatTo(values.date);
       const payload = {
@@ -99,7 +99,7 @@ export default function MissionManagment({ id }: { id?: string }) {
       dispatch(validate(payload));
       if (isValid) setSubmitting(false);
     },
-    [members],
+    [dispatch, isValid, members],
   );
 
   return (

@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Job, Pilot, Engineer, Passenger } from '../../types/missionManagment.types';
+import { Job, Pilot, Engineer, Passenger, Mission } from '../../types/missionManagment.types';
 import { hasDuplicates } from '../../utils';
 import { createNewMission, updateMission } from '../../services/index';
-import { Mission } from '../../types/missionManagment.types';
 import { MEMBER_TYPES } from '../../utils/consts';
 
 async function createNew(payload: Mission) {

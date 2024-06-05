@@ -1,12 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function hasDuplicates(array: string | any[]) {
   if (array?.length) {
     return new Set(array).size !== array.length;
   }
 }
-export function debounce<T extends (...args: any[]) => any>(
-  callback: T,
-  wait: number,
-): (...args: Parameters<T>) => void {
+export function debounce<T extends (..._: any[]) => any>(callback: T, wait: number): (..._: Parameters<T>) => void {
   let timeoutId: number | null = null;
   return (...args: Parameters<T>) => {
     if (timeoutId !== null) {
@@ -19,8 +17,8 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 export function convertToDate(dateString: string) {
   //  Convert a "dd/MM/yyyy" string into a Date object
-  let d = dateString.split('/');
-  let dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
+  const d = dateString.split('/');
+  const dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
   return dat;
 }
 

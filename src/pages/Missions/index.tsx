@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import Table from '../../components/Table/Table';
-import { CreatedMission } from '../../types/missionManagment.types';
+import { CreatedMission, reducer } from '../../types/missionManagment.types';
 import { getMissions, deleteMission } from '../../services';
 import { setMissionsA } from '../../store/missionManagment/missionManagment';
 import { ROUTES } from '../../utils/consts';
-import { reducer } from '../../types/missionManagment.types';
 import './styles.scss';
 
 export default function Missions() {
@@ -16,7 +15,7 @@ export default function Missions() {
   const isValid = useSelector<reducer>((state) => state.missionManagment.isValid);
 
   // Load missions, updates local an global state
-  const loadMissions = async () => {
+  const loadMissions = useCallback(async () => {
     try {
       const data = await getMissions();
       setMissions(data);
@@ -24,12 +23,12 @@ export default function Missions() {
     } catch (e) {
       console.error('Failed to load missions:', e);
     }
-  };
+  }, [dispatch]);
 
   // Load missions on mount and when isValid changes
   useEffect(() => {
     loadMissions();
-  }, [isValid]);
+  }, [isValid, loadMissions]);
 
   // Navigates to edit page
   const handleEdit = (id: string) => {
