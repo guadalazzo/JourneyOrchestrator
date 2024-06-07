@@ -44,7 +44,7 @@ export default function Table({
         <tr>
           <th>
             <label className="search">
-              <img src="public/assets/search.svg" alt="search"></img>
+              <img src="/assets/search.svg" alt="search"></img>
               <input
                 onChange={handleInput}
                 value={missionsName}
@@ -73,10 +73,10 @@ export default function Table({
               </td>
               <td>
                 <button className="btn-edit" onClick={() => handleEdit(mission.id)}>
-                  <img src="public/assets/edit.svg" alt="edit"></img>
+                  <img src="/assets/edit.svg" alt="edit"></img>
                 </button>
                 <button className="btn-delete" onClick={() => handleDelete(mission.id)}>
-                  <img src="public/assets/delete.svg" alt="delete"></img>
+                  <img src="/assets/delete.svg" alt="delete"></img>
                 </button>
               </td>
             </tr>
